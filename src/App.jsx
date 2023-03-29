@@ -1,54 +1,32 @@
-import Button from "./components/Button";
-import {
-  GoBell,
-  GoAlert,
-  GoCircleSlash,
-  GoCheck,
-  GoInfo,
-  GoThumbsup,
-} from "react-icons/go";
+import Accodion from "./components/Accodion";
+// import ButtonPage from "./pages/ButtonPage";
 
 const App = () => {
+  const items = [
+    {
+      id: "kj2h3",
+      label: "Can I use React here?",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo voluptates harum dicta sit ullam suscipit sunt provident quidem, nam quam.",
+    },
+    {
+      id: "5kl4l",
+      label: "Can I use JavaScript here?",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo voluptates harum dicta sit ullam suscipit sunt provident quidem, nam quam.",
+    },
+    {
+      id: "86jlk",
+      label: "Can I use CSS here?",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo voluptates harum dicta sit ullam suscipit sunt provident quidem, nam quam.",
+    },
+  ];
   return (
     <div>
-      <div>
-        <Button rounded>
-          <GoInfo />
-          Plain
-        </Button>
-      </div>
-      <div>
-        <Button primary outline>
-          <GoThumbsup />
-          Primary
-        </Button>
-      </div>
-      <div>
-        <Button secondary>
-          <GoBell />
-          Secondary
-        </Button>
-      </div>
-      <div>
-        <Button success>
-          <GoCheck />
-          Success
-        </Button>
-      </div>
-      <div>
-        <Button warning>
-          <GoAlert />
-          Warning
-        </Button>
-      </div>
-      <div>
-        <Button danger>
-          <GoCircleSlash />
-          Danger
-        </Button>
-      </div>
+      {/* <ButtonPage /> */}
+      <Accodion items={items} />
     </div>
   );
 };
-
 export default App;
