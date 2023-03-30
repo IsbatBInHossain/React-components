@@ -5,11 +5,13 @@ const Accodion = ({ items }) => {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   const handleClick = (index) => {
-    if (index === expandedIndex) {
-      setExpandedIndex(-1);
-    } else {
-      setExpandedIndex(index);
-    }
+    setExpandedIndex((current) => {
+      if (index === current) {
+        return -1;
+      } else {
+        return index;
+      }
+    });
   };
 
   const renderedItems = items.map(({ id, label, content }, index) => {
