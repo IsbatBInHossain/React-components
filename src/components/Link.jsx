@@ -1,19 +1,24 @@
-import { useContext } from "react";
-import NavigationContext from "../context/navigation";
-import Panel from "./Panel";
+import classNames from "classnames";
+import useNavigationContext from "../hooks/useNavigationContext";
 
-const Link = ({ to, children }) => {
-  const { navigate } = useContext(NavigationContext);
+const Link = ({ to, children, className, activeClassName }) => {
+  const { navigate, currentPath } = useNavigationContext();
+  const classes = classNames(
+    "text-blue-500",
+    className,
+    to === currentPath && activeClassName
+  );
   const handleClick = (event) => {
+    if (event.ctrlKey || event.metaKey) {
+      return;
+    }
     event.preventDefault();
     navigate(to);
   };
   return (
-    <Panel>
-      <a href={to} onClick={handleClick} className="flex-row justify-center">
-        {children}
-      </a>
-    </Panel>
+    <a href={to} onClick={handleClick} className={classes}>
+      {children}
+    </a>
   );
 };
 export default Link;
