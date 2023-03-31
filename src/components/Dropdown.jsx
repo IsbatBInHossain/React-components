@@ -7,7 +7,7 @@ const Dropdown = ({ options, onChange, value }) => {
   const divEl = useRef();
   useEffect(() => {
     const handle = (event) => {
-      if (!divEl) {
+      if (!divEl.current) {
         return;
       }
       if (!divEl.current.contains(event.target)) {
