@@ -21,8 +21,19 @@ const ModalPage = () => {
   );
   const modal = (
     <Modal onDismiss={onDismiss} actionBar={actionBar}>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe incidunt
-      maiores ab modi amet odio reprehenderit quisquam commodi earum vel.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem
+      adipisci repellat nobis est, recusandae quaerat cum ipsa asperiores soluta
+      id sunt obcaecati. Possimus aliquam pariatur repellat nisi, consequuntur
+      nesciunt accusantium. Accusantium perferendis quasi error. Repellendus qui
+      et hic deleniti, nobis explicabo. Doloremque sequi minus tempore neque
+      fugiat alias, consequatur itaque esse ipsa accusamus, eum cum repellat
+      dicta ipsam? Quidem vero totam repellendus delectus nemo doloremque labore
+      nostrum vel non neque sequi nam temporibus laudantium, et distinctio quia
+      perferendis veniam corporis maiores blanditiis culpa. Et tempora labore
+      nostrum saepe aspernatur? Quod modi eveniet saepe pariatur amet labore,
+      commodi fuga cumque laborum deserunt officia fugiat nam iste doloremque,
+      ut quidem obcaecati dolorem consequuntur architecto voluptatum est odit
+      quisquam maxime in.
     </Modal>
   );
 
