@@ -1,4 +1,16 @@
+import { Fragment } from "react";
 const Table = ({ data, config, keyFn }) => {
+  const renderedHead = config.map((column) => {
+    if (column.header) {
+      return <Fragment key={column.label}>{column.header()}</Fragment>;
+    }
+    return (
+      <th key={column.label} className="p-3">
+        {column.label}
+      </th>
+    );
+  });
+
   const renderedBody = data.map((items) => {
     const renderedCells = config.map((columns) => {
       return (
@@ -14,15 +26,6 @@ const Table = ({ data, config, keyFn }) => {
     );
   });
 
-  const renderedHead = config.map((column) => {
-    const capitaized =
-      column.label.charAt(0).toUpperCase() + column.label.slice(1);
-    return (
-      <th key={column.label} className="p-3">
-        {capitaized}
-      </th>
-    );
-  });
   return (
     <table className="table-auto border-spacing-2">
       <thead>
