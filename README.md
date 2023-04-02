@@ -253,24 +253,14 @@ The SortableTable component is a customizable table component that allows sortin
 
 The SortableTable component accepts the following props:
 
-#### data
+| Prop Name | Type     | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| --------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| data      | Array    | Yes      | An array of objects representing the rows of the table. Each object should contain key-value pairs representing the cells of the row.                                                                                                                                                                                                                                                                                           |
+| config    | Array    | Yes      | An array of objects representing the columns of the table. Each object should contain a label property representing the column header and a render property which is a function that takes in a row object and returns the value to be displayed in the cell. Additionally, a sortValue property can be added to the column object which is a function that takes in a row object and returns the value to be used for sorting. |
+| keyFn     | Function | No       | A function that takes in a row object and returns a unique key for the row. If not provided, the component will attempt to use the id property of the row object as the key.                                                                                                                                                                                                                                                    |
 
-Type: Array
-Required: Yes
-Description: An array of objects representing the rows of the table. Each object should contain key-value pairs representing the cells of the row.
+### Usage
 
-#### config
-
-Type: Array
-Required: Yes
-Description: An array of objects representing the columns of the table. Each object should contain a label property representing the column header and a render property which is a function that takes in a row object and returns the value to be displayed in the cell. Additionally, a sortValue property can be added to the column object which is a function that takes in a row object and returns the value to be used for sorting.
-
-#### keyFn
-
-Type: Function
-Required: No
-Description: A function that takes in a row object and returns a unique key for the row. If not provided, the component will attempt to use the id property of the row object as the key.
-Usage
 Here's an example of how to use the SortableTable component:
 
 ```jsx
