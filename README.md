@@ -339,7 +339,7 @@ function MyComponent() {
 }
 ```
 
-## Props
+### Props
 
 The Panel component accepts the following props:
 
@@ -376,7 +376,7 @@ function App() {
 
 In this example, the Panel component is used to contain a table generated using the Table component. The table data is sorted by age before being displayed.
 
-### Sidebar Component
+## Sidebar Component
 
 In addition to the components, this library also includes a Sidebar component that you can use to navigate to the different pages for each component. The Sidebar component is customizable, and you can customize the color, size, and style to match the look and feel of your application.
 
