@@ -15,7 +15,7 @@ const Modal = ({ onDismiss, children, actionBar }) => {
         onClick={onDismiss}
       ></div>
       <div className="fixed p-10 bg-white inset-40">
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col justify-between h-full overflow-hidden">
           {children}
           <div className="flex justify-end">{actionBar}</div>
         </div>
