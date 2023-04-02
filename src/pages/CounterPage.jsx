@@ -1,6 +1,7 @@
 import Button from "../components/Button";
 import { useReducer } from "react";
 import Panel from "../components/Panel";
+import produce from "immer";
 
 const CHANGE_VALUE = "change-value";
 const CHANGE_COUNT = "change-count";
@@ -8,29 +9,23 @@ const CHANGE_COUNT = "change-count";
 const reducer = (state, action) => {
   switch (action.type) {
     case CHANGE_COUNT:
-      return {
-        ...state,
-        counter: state.counter + action.payload,
-      };
+      state.counter = state.counter + action.payload;
+      return;
 
     case CHANGE_VALUE:
-      return {
-        ...state,
-        valueToAdd: action.payload,
-      };
+      state.valueToAdd = action.payload;
+      return;
 
     default:
-      return state;
+      return;
   }
 };
 
 const CounterPage = ({ initialCount }) => {
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(produce(reducer), {
     counter: initialCount,
     valueToAdd: 0,
   });
-  console.log(state);
-
   const handleChange = (event) => {
     const value = parseInt(event.target.value) || 0;
     dispatch({
