@@ -209,13 +209,124 @@ In the above example, clicking the "Open Modal" button will open a modal with a 
 
 ## Table Component
 
-The Table component is a reusable component that renders a table based on the configuration and data passed in. It is designed to be highly customizable and supports sorting of the data.
+The Table component is a flexible and customizable component for displaying tabular data. It takes in data as an array of objects and configuration options for rendering each column of the table.
+
+### Usage
+
+To use the Table component, import it into your React component and pass in the required props:
+
+```jsx
+import Table from "./Table";
+
+const data = [
+  { id: 1, name: "John Doe", age: 32, email: "johndoe@example.com" },
+  { id: 2, name: "Jane Doe", age: 28, email: "janedoe@example.com" },
+  { id: 3, name: "Bob Smith", age: 45, email: "bobsmith@example.com" },
+];
+
+const config = [
+  { label: "Name", render: (item) => item.name },
+  { label: "Age", render: (item) => item.age },
+  { label: "Email", render: (item) => item.email },
+];
+
+function MyComponent() {
+  return <Table data={data} config={config} />;
+}
+```
 
 ### Props
 
-data (required): An array of objects representing the rows in the table.
-config (required): An array of objects representing the columns in the table. Each object should contain a label and a render function that accepts a row object and returns the data to be displayed in that cell.
-keyFn: A function that returns a unique identifier for each row. If not provided, it defaults to the id property of each row object.
+The Table component accepts the following props:
+
+| Prop Name | Type     | Required | Description                                                                                                                                                                                                                                                   |
+| --------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| data      | Array    | Yes      | An array of objects representing the rows of the table. Each object should contain key-value pairs representing the cells of the row.                                                                                                                         |
+| config    | Array    | Yes      | An array of objects representing the columns of the table. Each object should contain a label property representing the column header and a render property which is a function that takes in a row object and returns the value to be displayed in the cell. |
+| keyFn     | Function | No       | A function that takes in a row object and returns a unique key for the row. If not provided, the component will attempt to use the id property of the row object as the key.                                                                                  |
+
+## SortableTable Component
+
+The SortableTable component is a customizable table component that allows sorting by clicking on column headers. It is built on top of the Table component and extends its functionality with sorting capability.
+
+### Props
+
+The SortableTable component accepts the following props:
+
+#### data
+
+Type: Array
+Required: Yes
+Description: An array of objects representing the rows of the table. Each object should contain key-value pairs representing the cells of the row.
+
+#### config
+
+Type: Array
+Required: Yes
+Description: An array of objects representing the columns of the table. Each object should contain a label property representing the column header and a render property which is a function that takes in a row object and returns the value to be displayed in the cell. Additionally, a sortValue property can be added to the column object which is a function that takes in a row object and returns the value to be used for sorting.
+
+#### keyFn
+
+Type: Function
+Required: No
+Description: A function that takes in a row object and returns a unique key for the row. If not provided, the component will attempt to use the id property of the row object as the key.
+Usage
+Here's an example of how to use the SortableTable component:
+
+```jsx
+import SortableTable from "./SortableTable";
+
+const data = [
+  { id: 1, name: "Alice", age: 25 },
+  { id: 2, name: "Bob", age: 30 },
+  { id: 3, name: "Charlie", age: 20 },
+];
+
+const config = [
+  { label: "Name", render: (row) => row.name, sortValue: (row) => row.name },
+  { label: "Age", render: (row) => row.age, sortValue: (row) => row.age },
+];
+
+const ExampleSortableTable = () => {
+  return <SortableTable data={data} config={config} keyFn={(row) => row.id} />;
+};
+```
+
+In this example, the SortableTable component is used to display a table with two columns: Name and Age. The data prop contains an array of objects representing the rows of the table, while the config prop specifies the column headers and the functions to render and sort the columns. The keyFn prop is used to provide a unique key for each row.
+
+### Sorting
+
+To enable sorting, the config prop should include a sortValue property for each column. The sortValue function takes in a row object and returns the value to be used for sorting. When the user clicks on a column header, the table will be sorted by that column in ascending order. Subsequent clicks on the same column header will toggle the sorting between ascending and descending order. Clicking on a different column header will reset the sorting to the initial state.
+
+### Example
+
+Here's an example of the SortableTable component in action:
+
+```jsx
+import React from "react";
+import SortableTable from "./SortableTable";
+
+const movieData = [
+  { id: 1, title: "The Shawshank Redemption", year: 1994 },
+  { id: 2, title: "The Godfather", year: 1972 },
+  { id: 3, title: "The Dark Knight", year: 2008 },
+  { id: 4, title: "12 Angry Men", year: 1957 },
+  { id: 5, title: "Schindler's List", year: 1993 },
+];
+
+const movieConfig = [
+  { label: "Title", sortValue: (movie) => movie.title },
+  { label: "Year", sortValue: (movie) => movie.year },
+];
+
+const MovieTable = () => {
+  return <SortableTable data={movieData} config={movieConfig} />;
+};
+
+export default MovieTable;
+```
+
+In this example, the SortableTable component is used to display a table of movies. The table can be sorted by clicking on the "Title" or "Year" column headers. The data prop is an array of objects representing the rows of the table, while the config prop is an array of objects representing the columns of the table. The sortValue property in each object specifies the value to be used for sorting the column.
 
 ## Panel Component
 
